@@ -6,6 +6,7 @@ export interface IPlayerMusic {
   img: ImageSourcePropType;
   author?: string;
   nameSong: string;
+  favorites?: boolean;
 }
 
 export interface IPlayerMusicParams {

@@ -18,6 +18,7 @@ export const MusicItem = ({
   addMusic,
   isMyMusic,
   deleteMusic,
+  onFavorite,
 }: IMusicItemProps) => {
   const navigation = useNavigation();
   const { author, id, img, nameSong } = music;
@@ -59,12 +60,26 @@ export const MusicItem = ({
           />
         )}
         {!isAllMusic && (
-          <PlayButton
-            type={EPlayButtonTypes.DELETE}
-            onPress={onDeleteMusic}
-            size={25}
-            title=""
-          />
+          <>
+            {onFavorite && (
+              <PlayButton
+                type={
+                  music?.favorites
+                    ? EPlayButtonTypes.STAR
+                    : EPlayButtonTypes.STARO
+                }
+                onPress={() => onFavorite(music.id)}
+                size={30}
+                title=""
+              />
+            )}
+            <PlayButton
+              type={EPlayButtonTypes.DELETE}
+              onPress={onDeleteMusic}
+              size={25}
+              title=""
+            />
+          </>
         )}
       </View>
     </TouchableOpacity>
@@ -85,7 +100,8 @@ const styles = StyleSheet.create({
   },
   titleContainer: {
     gap: 6,
-    width: '65%',
+    flex: 2,
+    // width: '65%',
   },
   title: {
     fontWeight: '500',
@@ -97,7 +113,13 @@ const styles = StyleSheet.create({
     borderRadius: 8,
   },
   buttons: {
-    justifyContent: 'center',
+    justifyContent: 'flex-end',
+    alignContent: 'flex-end',
+    alignItems: 'center',
+    flex: 1,
     height: '100%',
+    flexDirection: 'row',
+    gap: 10,
+    paddingRight: 5,
   },
 });

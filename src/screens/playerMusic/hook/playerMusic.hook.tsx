@@ -113,7 +113,7 @@ export const usePlayerMusicHook = ({
       await sound?.current?.unloadAsync();
       await loadAudio();
     })();
-  }, [currentAudioId, audioList]);
+  }, [currentAudioId, audioList.length]);
 
   return {
     playAudio,
@@ -122,6 +122,7 @@ export const usePlayerMusicHook = ({
     playFromTime,
     switchNextSong,
     switchPrevSong,
+    currentSongSettings,
     isPlaying: !!status?.isLoaded && isPlaying,
     durationMillis: status?.isLoaded ? status.durationMillis ?? 0 : 0,
     positionMillis: status?.isLoaded ? status.positionMillis ?? 0 : 0,

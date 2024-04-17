@@ -6,4 +6,6 @@ export enum EPlayButtonTypes {
   ADD = 'plus',
   CHECK = 'check',
   DELETE = 'delete',
+  STAR = 'star',
+  STARO = 'staro',
 }

@@ -3,7 +3,7 @@ import { MusicItem } from '../../components/musicItem';
 import { useMyMusics } from '../../hooks/myMusics.hook';
 
 export const MyMusics = () => {
-  const { myMusic, deleteMusic, getMyMusic } = useMyMusics();
+  const { myMusic, deleteMusic, getMyMusic, onFavorite } = useMyMusics();
 
   return (
     <>
@@ -14,7 +14,11 @@ export const MyMusics = () => {
           onRefresh={getMyMusic}
           refreshing={false}
           renderItem={({ item }) => (
-            <MusicItem music={item} deleteMusic={deleteMusic} />
+            <MusicItem
+              music={item}
+              deleteMusic={deleteMusic}
+              onFavorite={onFavorite}
+            />
           )}
         />
       )}

@@ -6,4 +6,5 @@ export interface IMusicItemProps {
   addMusic?: (music: IPlayerMusic) => Promise<void>;
   deleteMusic?: (music: IPlayerMusic) => Promise<void>;
   isMyMusic?: boolean;
+  onFavorite?: (id: string) => void;
 }

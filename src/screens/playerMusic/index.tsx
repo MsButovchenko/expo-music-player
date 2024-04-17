@@ -15,10 +15,11 @@ export const PlayerMusic = () => {
   const route = useRoute();
   const { id, isMyMusic } = (route.params ?? {}) as IPlayerMusicParams;
 
-  const { myMusic } = useMyMusics();
+  const { myMusic, onFavorite, myMusicIds } = useMyMusics();
   const [currentAudioId, setCurrentAudioId] = useState(id);
 
   const audioList = isMyMusic ? myMusic ?? [] : musicMock;
+  const added = myMusicIds?.includes(currentAudioId);
 
   useEffect(() => {
     if (id !== currentAudioId && id) {
@@ -37,6 +38,7 @@ export const PlayerMusic = () => {
     pauseAudio,
     playFromTime,
     switchNextSong,
+    currentSongSettings,
     switchPrevSong,
     author,
     title,
@@ -67,6 +69,27 @@ export const PlayerMusic = () => {
                     {author}
                   </Text>
                 </View>
+              </>
+            )}
+          </View>
+          <View style={styles.settings}>
+            {added && isMyMusic && (
+              <>
+                <Text>
+                  {currentSongSettings?.favorites
+                    ? 'Добавлено в избранное'
+                    : 'Добавить в избранное'}
+                </Text>
+                <PlayButton
+                  type={
+                    currentSongSettings?.favorites
+                      ? EPlayButtonTypes.STAR
+                      : EPlayButtonTypes.STARO
+                  }
+                  onPress={() => onFavorite(currentAudioId)}
+                  size={25}
+                  title=""
+                />
               </>
             )}
           </View>

@@ -40,6 +40,16 @@ export const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'flex-end',
   },
+  settings: {
+    width: '100%',
+    alignItems: 'center',
+    gap: 6,
+    justifyContent: 'flex-end',
+    alignContent: 'flex-end',
+    flexDirection: 'row',
+    paddingHorizontal: 10,
+    paddingBottom: 18,
+  },
   progressBar: {
     height: 40,
     flexDirection: 'row',

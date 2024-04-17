@@ -19,6 +19,20 @@ export const useMyMusics = () => {
     }
   };
 
+  const onFavorite = async (id: string) => {
+    try {
+      const musics =
+        myMusic?.map((music) =>
+          music.id === id ? { ...music, favorites: !music.favorites } : music
+        ) ?? null;
+      await AsyncStorage.setItem(MY_MUSIC_KEY, JSON.stringify(musics));
+      console.log(musics);
+      setMusics(musics);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
   const setMusics = (musics: IPlayerMusic[] | null) => {
     setMyMusic(musics);
     setMyMusicIds(musics?.map((music) => music?.id) ?? null);
@@ -61,6 +75,7 @@ export const useMyMusics = () => {
     addMusic,
     deleteMusic,
     getMyMusic,
+    onFavorite,
     myMusicIds,
   };
 };

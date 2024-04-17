@@ -1,5 +1,5 @@
 export enum EScreens {
-  Player = 'player',
-  PlayList = 'playList',
-  MyMusic = 'myMusic',
+  Player = 'Плеер',
+  PlayList = 'Библиотека',
+  MyMusic = 'Моя музыка',
 }
